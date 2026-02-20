@@ -9,8 +9,8 @@ const fs = require("fs");
 
 // promisified fs.readFile
 
-const fsReadFilePromisified = (fileName, encoding) => {
-  return new Promise((reject, resolve) => {
+const  fsReadFilePromisified = (fileName, encoding) => {
+  return new Promise((resolve, reject) => {
     fs.readFile(fileName, encoding, (err, data) => {
       if (err) {
         reject(err);
@@ -21,7 +21,7 @@ const fsReadFilePromisified = (fileName, encoding) => {
   });
 };
 
-fsReadFilePromisified("a.txt", "utf-8")
+ fsReadFilePromisified("a.txt", "utf-8")
   .then((data) => {
     console.log(data);
   })
@@ -32,13 +32,13 @@ fsReadFilePromisified("a.txt", "utf-8")
 // promisified setTimeout
 
 const setTimeoutPromisified = (delay) => {
-  return new Promise((reject, resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve;
+      resolve();
     }, delay);
   });
 };
 
-setTimeoutPromisified(3000).then(() => {
+setTimeoutPromisified(1000).then(() => {
   console.log("time has passed");
 });
