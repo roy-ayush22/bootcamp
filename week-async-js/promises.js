@@ -9,7 +9,7 @@ const fs = require("fs");
 
 // promisified fs.readFile
 
-const  fsReadFilePromisified = (fileName, encoding) => {
+const fsReadFilePromisified = (fileName, encoding) => {
   return new Promise((resolve, reject) => {
     fs.readFile(fileName, encoding, (err, data) => {
       if (err) {
@@ -21,7 +21,7 @@ const  fsReadFilePromisified = (fileName, encoding) => {
   });
 };
 
- fsReadFilePromisified("a.txt", "utf-8")
+fsReadFilePromisified("a.txt", "utf-8")
   .then((data) => {
     console.log(data);
   })
