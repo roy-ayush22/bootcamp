@@ -1,27 +1,43 @@
-function addTodo() {
-  const data = document.getElementById("add-todo");
-  const todo = data.value;
+const INPUT_ID = "input-box";
+const PARENT_ID = "parent-div";
+
+let counter = 1;
+
+const getInputData = () => {
+  const rawData = document.getElementById(INPUT_ID);
+  let todo = rawData.value;
   if (todo == "") {
     return;
   }
-  data.value = "";
+  rawData.value = "";
+  return todo;
+};
 
+const deleteTodo = (element) => {
+  element.remove();
+};
+
+const addDivElement = (todo) => {
   const addDiv = document.createElement("div");
-
-  const addSpan = document.createElement("span");
-  addSpan.innerHTML = todo;
+  const span = document.createElement("span");
+  span.innerHTML = `${counter++}. ${todo}`;
+  span.style.marginRight = "10px";
+  addDiv.style.marginBottom = "10px";
 
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "delete todo";
-  deleteButton.onclick = function () {
+  deleteButton.onclick = () => {
     deleteTodo(addDiv);
   };
-  addDiv.appendChild(addSpan);
+
+  addDiv.appendChild(span);
   addDiv.appendChild(deleteButton);
 
-  document.getElementById("parent-div").appendChild(addDiv);
-}
+  document.getElementById(PARENT_ID).appendChild(addDiv);
+};
 
-function deleteTodo(element) {
-  element.remove();
-}
+const addTodo = () => {
+  const todo = getInputData();
+  if (!todo) return;
+  addDivElement(todo);
+};

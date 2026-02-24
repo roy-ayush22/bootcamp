@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DOM</title>
+    <title>add todo</title>
   </head>
   <body>
-    <h1>Todo List</h1>
-    <div style="display: flex">
-      <input type="text" id="add-todo" style="margin-right: 0.5rem" />
-      <button id="add-button" onclick="addTodo()">add todo</button>
+    <h1 style="margin: 1rem">Todo</h1>
+    <div id="container" style="display: flex; margin: 1rem">
+      <input style="margin-right: 15px" type="text" name="" id="input-box" />
+      <button onclick="addTodo()">add todo</button>
     </div>
-    <div id="parent-div"></div>
+    <div style="margin: 1rem" id="parent-div"></div>
     <script src="./index.js"></script>
   </body>
 </html>
