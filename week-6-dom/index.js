@@ -2,6 +2,11 @@ const INPUT_ID = "input-box";
 const PARENT_ID = "parent-div";
 
 let counter = 1;
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+const saveTodos = (todo) => {
+  localStorage.setItem("todos", JSON.stringify(todo));
+};
 
 const getInputData = () => {
   const rawData = document.getElementById(INPUT_ID);
@@ -13,8 +18,10 @@ const getInputData = () => {
   return todo;
 };
 
-const deleteTodo = (element) => {
+const deleteTodo = (element, removetodo) => {
   element.remove();
+  todos = todos.filter((t) => t !== removetodo);
+  saveTodos(todos);
 };
 
 const addDivElement = (todo) => {
@@ -27,7 +34,7 @@ const addDivElement = (todo) => {
   const deleteButton = document.createElement("button");
   deleteButton.innerHTML = "delete todo";
   deleteButton.onclick = () => {
-    deleteTodo(addDiv);
+    deleteTodo(addDiv, todo);
   };
 
   addDiv.appendChild(span);
@@ -36,8 +43,18 @@ const addDivElement = (todo) => {
   document.getElementById(PARENT_ID).appendChild(addDiv);
 };
 
+const loadTodos = () => {
+  todos.forEach((todo) => {
+    addDivElement(todo);
+  });
+};
+
 const addTodo = () => {
   const todo = getInputData();
   if (!todo) return;
+  todos.push(todo);
+  saveTodos(todos);
   addDivElement(todo);
 };
+
+loadTodos();
