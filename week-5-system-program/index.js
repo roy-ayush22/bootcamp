@@ -19,13 +19,13 @@ const sender = Keypair.fromSecretKey(
   ]),
 );
 
-const reciever = new PublicKey("JCQaQ88AuRFmzfBBVzY5Hz2gVxpxqhGo6oUk1CedtGfS");
+const reciever = new PublicKey("");
 
 const transaction = new Transaction().add(
   SystemProgram.transfer({
     fromPubkey: sender.publicKey,
     toPubkey: reciever,
-    lamports: 0.1 * LAMPORTS_PER_SOL,
+    lamports: 0.4 * LAMPORTS_PER_SOL,
   }),
 );
 
